@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "title": "架构",
+  "groups": [
+    {
+      "title": "系统组成",
+      "catalog": "架构/系统组成/catalog.json"
+    },
+    {
+      "title": "运行机制",
+      "catalog": "架构/运行机制/catalog.json"
+    },
+    {
+      "title": "接口与协议",
+      "catalog": "架构/接口与协议/catalog.json"
+    },
+    {
+      "title": "架构决策",
+      "catalog": "架构/架构决策/catalog.json"
+    }
+  ],
+  "topics": []
+}

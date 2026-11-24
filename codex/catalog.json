@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "path_base": "repository-root",
+  "domains": [
+    {
+      "id": "codex.business",
+      "title": "业务",
+      "summary": "产品定位、使用场景与任务验收。",
+      "catalog": "业务/catalog.json"
+    },
+    {
+      "id": "codex.architecture",
+      "title": "架构",
+      "summary": "系统组成、运行机制、接口契约与架构决策。",
+      "catalog": "架构/catalog.json"
+    },
+    {
+      "id": "codex.engineering",
+      "title": "工程",
+      "summary": "安装使用、命令配置、扩展集成与开发验证。",
+      "catalog": "工程/catalog.json"
+    },
+    {
+      "id": "codex.operations",
+      "title": "运维",
+      "summary": "运行部署、认证权限、故障诊断与版本维护。",
+      "catalog": "运维/catalog.json"
+    }
+  ],
+  "extensions": []
+}

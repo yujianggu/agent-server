@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "domains": [
+    {
+      "id": "codex.business",
+      "title": "业务",
+      "summary": "产品定位、使用场景与任务验收。",
+      "path": "业务"
+    },
+    {
+      "id": "codex.architecture",
+      "title": "架构",
+      "summary": "系统组成、运行机制、接口契约与架构决策。",
+      "path": "架构"
+    },
+    {
+      "id": "codex.engineering",
+      "title": "工程",
+      "summary": "安装使用、命令配置、扩展集成与开发验证。",
+      "path": "工程"
+    },
+    {
+      "id": "codex.operations",
+      "title": "运维",
+      "summary": "运行部署、认证权限、故障诊断与版本维护。",
+      "path": "运维"
+    }
+  ],
+  "extensions": []
+}

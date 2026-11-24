@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "title": "监控与诊断",
+  "groups": [],
+  "topics": [
+    {
+      "id": "codex.operations.cache-diagnostics",
+      "title": "Codex 缓存诊断",
+      "summary": "按 usage、WebSocket 续传原因及目录失效证据定位缓存问题，设计控制变量观察并区分 token 占比与费用。",
+      "kind": "method",
+      "scope": "general",
+      "status": "general",
+      "metadata": "运维/监控与诊断/缓存诊断/topic.json"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "title": "业务",
+  "groups": [
+    {
+      "title": "产品与概念",
+      "catalog": "业务/产品与概念/catalog.json"
+    },
+    {
+      "title": "使用场景",
+      "catalog": "业务/使用场景/catalog.json"
+    },
+    {
+      "title": "需求与验收",
+      "catalog": "业务/需求与验收/catalog.json"
+    }
+  ],
+  "topics": []
+}

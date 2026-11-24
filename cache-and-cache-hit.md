@@ -3,6 +3,8 @@
 > 整理自 ChatGPT 对话「实现常驻Codex服务」中关于缓存的完整回答。
 > 本文保留原文示例、代码与 ASCII 架构图，仅统一标题层级并添加目录。示例中的耗时、Token 数量和架构用于概念说明，不代表实测指标或已实现的功能。
 
+> 实现核对补充：本文是概念方案，Redis、Project Cache 等不代表 Codex 已有功能。基于 `rust-v0.171.0` 源码的机制说明见 [Codex 缓存策略与实现](codex/架构/运行机制/缓存策略与实现/README.md)，指标与排查见 [缓存诊断](codex/运维/监控与诊断/缓存诊断/README.md)。
+
 来源：[实现常驻Codex服务](chatgpt-conversation://6aad2312-d71c-83ec-b481-13b82f4c0994)
 
 ## 目录

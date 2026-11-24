@@ -1,0 +1,19 @@
+{
+  "id": "codex.architecture.cache",
+  "title": "Codex 缓存策略与实现",
+  "summary": "区分模型前缀缓存、WebSocket 续传与本地发现解析缓存，核对缓存键、生命周期、失效条件及源码路径。",
+  "kind": "reference",
+  "scope": "general",
+  "status": "general",
+  "entrypoints": {
+    "detail": [
+      "README.md",
+      "实现逻辑.md"
+    ],
+    "sources": "来源与适用边界.md"
+  },
+  "requires": [],
+  "related": [
+    "codex.operations.cache-diagnostics"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "title": "运维",
+  "groups": [
+    {
+      "title": "部署与运行",
+      "catalog": "运维/部署与运行/catalog.json"
+    },
+    {
+      "title": "认证与权限",
+      "catalog": "运维/认证与权限/catalog.json"
+    },
+    {
+      "title": "监控与诊断",
+      "catalog": "运维/监控与诊断/catalog.json"
+    },
+    {
+      "title": "版本与升级",
+      "catalog": "运维/版本与升级/catalog.json"
+    }
+  ],
+  "topics": []
+}

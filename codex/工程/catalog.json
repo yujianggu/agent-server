@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "title": "工程",
+  "groups": [
+    {
+      "title": "安装与入门",
+      "catalog": "工程/安装与入门/catalog.json"
+    },
+    {
+      "title": "CLI命令",
+      "catalog": "工程/CLI命令/catalog.json"
+    },
+    {
+      "title": "配置与指令",
+      "catalog": "工程/配置与指令/catalog.json"
+    },
+    {
+      "title": "工具与扩展",
+      "catalog": "工程/工具与扩展/catalog.json"
+    },
+    {
+      "title": "SDK与服务集成",
+      "catalog": "工程/SDK与服务集成/catalog.json"
+    },
+    {
+      "title": "开发与测试",
+      "catalog": "工程/开发与测试/catalog.json"
+    }
+  ],
+  "topics": []
+}
