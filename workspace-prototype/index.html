@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="保留 Codex 头部的 ChatGPT 网页工作区原型">
+  <title>Codex</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./desktop.css">
+  <link rel="stylesheet" href="./workspace.css">
+  <link rel="stylesheet" href="./web-content.css">
+  <link rel="stylesheet" href="./web-sections.css">
+  <link rel="stylesheet" href="./web-explore.css">
+  <link rel="stylesheet" href="./web-navigation.css">
+  <script type="module" src="./workspace.js"></script>
+</head>
+<body>
+  <div class="desktop" id="desktop">
+    <header class="desktop-toolbar">
+      <div class="toolbar-navigation">
+        <span class="toolbar-item" data-tooltip="隐藏侧边栏"><button class="icon-button navigation-toggle" type="button" id="navigation-toggle" aria-label="隐藏侧边栏" aria-controls="sidebar" aria-expanded="true"><span class="ui-icon" data-icon="panel-left"></span></button></span>
+        <span class="toolbar-item" data-tooltip="返回"><button class="icon-button" type="button" id="back" aria-label="返回" disabled><span class="ui-icon" data-icon="back"></span></button></span>
+        <span class="toolbar-item" data-tooltip="前进"><button class="icon-button" type="button" id="forward" aria-label="前进" disabled><span class="ui-icon" data-icon="forward"></span></button></span>
+        <span class="toolbar-item" data-tooltip="新聊天" hidden><button class="icon-button" type="button" id="toolbar-new-thread" aria-label="新聊天"><span class="ui-icon" data-icon="edit"></span></button></span>
+      </div>
+      <div class="toolbar-title"><span class="ui-icon" data-icon="folder"></span><h1 id="thread-title">安装 shotproof</h1></div>
+      <div class="toolbar-actions">
+        <span class="toolbar-item" data-tooltip="更多"><button class="icon-button" type="button" id="thread-options" aria-label="更多" aria-haspopup="menu" aria-expanded="false"><span class="ui-icon" data-icon="more"></span></button></span>
+        <span class="toolbar-item" data-tooltip="摘要"><button class="icon-button" type="button" id="thread-summary" aria-label="摘要" aria-haspopup="dialog" aria-controls="workspace-dialog"><span class="ui-icon" data-icon="sliders"></span></button></span>
+        <span class="toolbar-item" data-tooltip="标签页"><button class="icon-button" type="button" id="side-panel-toggle" aria-label="标签页" aria-controls="side-panel" aria-expanded="false"><span class="ui-icon" data-icon="panel-right"></span></button></span>
+      </div>
+    </header>
+
+    <nav class="desktop-rail" aria-label="主导航">
+      <div class="rail-primary">
+        <button class="icon-button rail-home selected" id="home" type="button" aria-label="首页" title="首页"><span class="ui-icon" data-icon="home"></span></button>
+        <button class="icon-button" id="pages" type="button" aria-label="资料空间" title="资料空间"><span class="ui-icon" data-icon="pages"></span></button>
+        <button class="icon-button" id="schedules" type="button" aria-label="定时任务" title="定时任务"><span class="ui-icon" data-icon="calendar"></span></button>
+        <button class="icon-button" id="plugins" type="button" aria-label="插件" title="插件"><span class="ui-icon" data-icon="plugin"></span></button>
+        <button class="icon-button" id="more" type="button" aria-label="探索" title="探索" aria-haspopup="dialog" aria-expanded="false"><span class="ui-icon" data-icon="more"></span></button>
+        <hr id="rail-pinned-divider">
+        <div id="rail-pinned" class="rail-pinned"></div>
+      </div>
+      <div class="rail-bottom">
+        <button class="icon-button" id="usage" type="button" aria-label="用量" title="用量" aria-haspopup="menu" aria-expanded="false"><span class="ui-icon" data-icon="usage"></span></button>
+        <button class="icon-button avatar" id="profile" type="button" aria-label="打开个人资料菜单" title="个人资料" aria-haspopup="menu" aria-expanded="false">YU</button>
+      </div>
+    </nav>
+
+    <button class="navigation-scrim" id="navigation-scrim" type="button" aria-label="关闭导航" hidden></button>
+
+    <div class="desktop-window">
+      <aside class="desktop-sidebar" id="sidebar" aria-label="项目和聊天">
+        <header class="sidebar-header">
+          <button class="product-menu" id="product-menu" type="button">ChatGPT</button>
+          <div class="sidebar-tools">
+            <button class="icon-button" id="section-filter" type="button" aria-label="筛选任务" title="筛选任务" aria-haspopup="menu" aria-expanded="false" hidden><span class="ui-icon" data-icon="filter"></span></button>
+            <button class="icon-button" id="library-notifications" type="button" aria-label="通知" title="通知" hidden><span class="ui-icon" data-icon="bell"></span></button>
+            <button class="icon-button" id="search-thread" type="button" aria-label="搜索会话" title="搜索会话" aria-keyshortcuts="Meta+K Control+K"><span class="ui-icon" data-icon="search"></span></button>
+            <button class="icon-button" id="sidebar-collapse" type="button" aria-label="折叠二级菜单" title="折叠二级菜单" aria-controls="sidebar"><span class="ui-icon" data-icon="panel-left"></span></button>
+          </div>
+        </header>
+        <div class="sidebar-scroll" id="home-sidebar">
+          <div class="sidebar-actions">
+            <button class="sidebar-row" id="new-thread" type="button"><span class="ui-icon" data-icon="edit"></span><span>新聊天</span></button>
+            <button class="sidebar-row" id="dot" type="button"><span class="ui-icon" data-icon="dot"></span><span>Dot</span></button>
+          </div>
+          <section class="sidebar-group pinned-group" id="pinned-group" aria-labelledby="pinned-label">
+            <h2 id="pinned-label">置顶</h2>
+            <div class="sidebar-items" id="pinned"></div>
+          </section>
+          <section class="sidebar-group projects-group" aria-labelledby="projects-label">
+            <div class="sidebar-group-heading">
+              <h2 id="projects-label"><button class="sidebar-section-toggle" type="button" id="projects-toggle" aria-controls="projects-body" aria-expanded="true">项目</button></h2>
+              <div class="sidebar-group-actions">
+                <button class="icon-button" id="project-options" type="button" aria-label="项目侧边栏选项" title="选项" aria-haspopup="menu" aria-expanded="false"><span class="ui-icon" data-icon="sliders"></span></button>
+                <button class="icon-button" id="add-project" type="button" aria-label="添加新项目" title="添加新项目"><span class="ui-icon" data-icon="plus"></span></button>
+              </div>
+            </div>
+            <div id="projects-body">
+              <div class="sidebar-items" id="projects"></div>
+              <button class="sidebar-row show-projects" id="show-projects" type="button" aria-expanded="false">展开显示</button>
+            </div>
+          </section>
+          <section class="sidebar-group recent-group" aria-labelledby="recent-label">
+            <div class="sidebar-group-heading">
+              <h2 id="recent-label"><button class="sidebar-section-toggle" type="button" id="recent-toggle" aria-controls="recent" aria-expanded="true">最近</button></h2>
+              <div class="sidebar-group-actions">
+                <button class="icon-button" id="recent-options" type="button" aria-label="聊天侧边栏选项" title="选项" aria-haspopup="menu" aria-expanded="false"><span class="ui-icon" data-icon="sliders"></span></button>
+                <button class="icon-button" id="recent-new-thread" type="button" aria-label="新聊天" title="新聊天"><span class="ui-icon" data-icon="plus"></span></button>
+              </div>
+            </div>
+            <div class="sidebar-items" id="recent"></div>
+          </section>
+        </div>
+        <div class="sidebar-scroll web-section-sidebar" id="web-section-sidebar" hidden></div>
+      </aside>
+
+      <main class="desktop-main" id="chat-main" data-empty="true" data-mode="work">
+        <div class="web-chat-top" id="web-chat-top">
+          <div class="web-mode-switch" role="group" aria-label="撰写模式">
+            <button id="mode-chat" type="button" aria-pressed="false">聊天</button>
+            <button id="mode-work" type="button" aria-pressed="true">工作</button>
+          </div>
+          <button class="icon-button web-temporary" id="temporary-chat" type="button" aria-label="临时聊天" title="临时聊天" aria-pressed="false"><span class="ui-icon" data-icon="incognito"></span></button>
+        </div>
+        <section class="chat-scroll" id="conversation" aria-label="对话" tabindex="0">
+          <div class="chat-column" id="messages" role="log" aria-label="消息记录" aria-live="off"></div>
+        </section>
+        <div class="chat-stage" id="chat-stage">
+          <section class="thread-empty" id="thread-empty" aria-labelledby="web-home-heading">
+            <h2 id="web-home-heading">我们要做什么？</h2>
+            <p id="temporary-note" hidden>临时聊天不会出现在历史记录中。</p>
+          </section>
+          <footer class="chat-footer">
+            <form class="chat-column composer" id="composer">
+              <div class="composer-attachments" id="attachments" hidden></div>
+              <div class="composer-field">
+                <label class="sr-only" for="message">消息</label>
+                <textarea id="message" rows="2" maxlength="8000" enterkeyhint="send" aria-describedby="suggestion" placeholder="使用 ChatGPT Work"></textarea>
+                <div class="suggestion" id="suggestion"><span id="suggestion-text">用 Shotproof 把这张截图转成 HTML，并验证还原效果。</span><kbd>按 Tab 键接受</kbd></div>
+              </div>
+              <div class="composer-tools">
+                <div class="composer-left">
+                  <input id="attachment-picker" type="file" multiple hidden>
+                  <button class="icon-button attachment-control" id="add-attachment" type="button" aria-label="添加附件" title="添加附件" aria-expanded="false"><span class="ui-icon" data-icon="plus"></span></button>
+                </div>
+                <div class="composer-right">
+                  <button class="model-control" id="model" type="button" aria-label="模型" title="模型" aria-expanded="false"><span id="model-label">GPT-6.2 Sol</span> <span id="effort-label">轻度</span><span class="ui-icon" data-icon="chevron-down"></span></button>
+                  <button class="icon-button dictation-control" id="dictation" type="button" aria-label="听写" title="听写"><span class="ui-icon" data-icon="mic"></span></button>
+                  <button class="icon-button voice-control" id="voice" type="button" aria-label="开始语音" title="开始语音"><span class="ui-icon" data-icon="wave"></span></button>
+                  <button class="icon-button voice-control send-control" id="send" type="submit" aria-label="发送" title="发送" hidden><span class="ui-icon" data-icon="arrow-up"></span></button>
+                </div>
+              </div>
+            </form>
+            <div class="chat-column web-work-tools" id="web-work-tools">
+              <button id="work-project" type="button" aria-expanded="false"><span class="ui-icon" data-icon="folder"></span><span id="work-project-label">选择项目</span></button>
+              <button id="work-files" type="button"><span class="ui-icon" data-icon="pages"></span><span>文件</span></button>
+              <button id="work-plugins" type="button"><span class="ui-icon" data-icon="plugin"></span><span>插件</span></button>
+              <button class="web-desktop-app" id="work-desktop" type="button"><span class="ui-icon" data-icon="monitor"></span><span>打开桌面应用</span></button>
+            </div>
+          </footer>
+          <section class="chat-column web-suggestions" id="web-suggestions" aria-labelledby="web-suggestions-title">
+            <h3 id="web-suggestions-title"><span aria-hidden="true">💡</span> 看看工作模式能做什么</h3>
+            <div class="web-suggestion-grid">
+              <button class="web-suggestion-card" type="button" data-prompt="帮我整理这个项目的目录结构、主要模块和入门步骤。">
+                <span class="web-suggestion-top"><span class="web-suggestion-icon project-card-icon ui-icon" data-icon="grid"></span><span class="web-suggestion-try">试一试</span></span>
+                <strong>整理项目结构</strong><span class="web-suggestion-description">梳理目录、模块和上手步骤。</span>
+              </button>
+              <button class="web-suggestion-card" type="button" data-prompt="帮我按功能、测试和风险整理一份变更审查清单。">
+                <span class="web-suggestion-top"><span class="web-suggestion-icon review-card-icon ui-icon" data-icon="branch"></span><span class="web-suggestion-try">试一试</span></span>
+                <strong>准备代码评审</strong><span class="web-suggestion-description">整理变更、验证步骤和待确认项。</span>
+              </button>
+              <button class="web-suggestion-card" type="button" data-prompt="根据我提供的资料起草一份简明的项目说明。">
+                <span class="web-suggestion-top"><span class="web-suggestion-icon ui-icon" data-icon="edit"></span><span class="web-suggestion-try">试一试</span></span>
+                <strong>撰写项目说明</strong><span class="web-suggestion-description">把背景、目标和实施步骤写成草稿。</span>
+              </button>
+            </div>
+          </section>
+        </div>
+        <div class="web-section-view" id="web-section-view" hidden></div>
+      </main>
+
+      <aside class="desktop-aux" id="side-panel" aria-labelledby="side-panel-title" hidden>
+        <header><h2 id="side-panel-title">标签页</h2><button class="icon-button" id="side-panel-close" type="button" aria-label="关闭标签页"><span class="ui-icon" data-icon="x"></span></button></header>
+        <div id="side-panel-body"></div>
+      </aside>
+    </div>
+  </div>
+
+  <dialog class="workspace-dialog" id="workspace-dialog" aria-labelledby="dialog-title">
+    <header><h2 id="dialog-title"></h2><form method="dialog"><button class="icon-button" aria-label="关闭"><span class="ui-icon" data-icon="x"></span></button></form></header>
+    <div class="dialog-body" id="dialog-body"></div>
+  </dialog>
+  <div class="floating-menu" id="floating-menu" role="menu" hidden></div>
+  <div class="notification-toast" id="toast" role="status" hidden></div>
+  <div class="sr-only" id="announcement" role="status"></div>
+</body>
+</html>
